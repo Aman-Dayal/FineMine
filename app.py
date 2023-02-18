@@ -29,8 +29,10 @@ app = Flask(__name__)
 
 oauth = OAuth(app)
 
-GOOGLE_CLIENT_ID = '654587850459-bav6cjjgmclpcpb4m558s5qnuonh5npt.apps.googleusercontent.com'
-GOOGLE_CLIENT_SECRET = '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'
+oauth = OAuth(app)
+
+GOOGLE_CLIENT_ID = 'Your Client Id'
+GOOGLE_CLIENT_SECRET = 'Client Secret key'
 REDIRECT_URI = '/authorised'
 
 
@@ -39,22 +41,24 @@ app.config['UPLOAD_EXTENSIONS'] = ['.pdf', '.docx', '.doc']
 app.config['MAX_CONTENT_LENGTH'] = 1024*1024*1024
 app.config['UPLOAD_PATH'] = 'uploads'
 
-app.config['SECRET_KEY'] = secrets.token_hex(32)
+app.config['SECRET_KEY'] = 'generate some random secret key'
 
-AUTH0_DOMAIN = "dev-3dxvsy4gys26dmuy.us.auth0.com"
+AUTH0_DOMAIN = "dev-lo037ct9.us.auth0.com"
 
 oauth.register(
     "auth0",
-    client_id="uXVAchzolrO3IG6Z8D2IPpDeP6S5ui07",
-    client_secret="b6_vYllwgviSUx5oBJoWKmyDdo7Yb2kPit_2AIWnKf-NSIPUT7x18A6_2yN229iz",
+    client_id="Your Client Id",
+    client_secret="'Client Secret key",
     client_kwargs={
         "scope": "openid profile email",
     },
     server_metadata_url=f'https://{AUTH0_DOMAIN}/.well-known/openid-configuration'
 )
 
-SECRET_KEY = secrets.token_hex(32)
+SECRET_KEY = 'development key'
 DEBUG = True
+
+
 
 try:
     mongo = pymongo.MongoClient("mongodb://localhost:27017/FineMine")
